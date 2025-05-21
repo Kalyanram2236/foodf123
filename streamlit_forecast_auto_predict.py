@@ -9,14 +9,9 @@ warnings.filterwarnings("ignore")
 
 @st.cache_resource
 def connect_to_db():
-    engine = create_engine('postgresql+psycopg2://postgres:123456789@localhost:5432/salesdb')
+    # Using your Railway connection string here
+    engine = create_engine('postgresql://postgres:spTFufHenHnSBDaNHIZnhmiWPpGonlKW@tramway.proxy.rlwy.net:45731/railway')
     return engine.connect()
-
-@st.cache_resource
-def connect_to_db():
-    secrets = st.secrets["postgres"]
-    connection_string = f"postgresql://{secrets['user']}:{secrets['password']}@{secrets['host']}:{secrets['port']}/{secrets['dbname']}"
-    return create_engine(connection_string).connect()
 
 @st.cache_data
 def load_data():
